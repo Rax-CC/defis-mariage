@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +6,7 @@
 
   <title>Les Défis des Mariés 💍</title>
 
-  <meta name="description" content="Les défis photos des mariés !">
+  <meta name="description" content="Les défis photos du mariage">
 
   <style>
     * {
@@ -74,10 +73,6 @@
       flex: 1;
     }
 
-    /* =========================
-       ACCUEIL
-    ========================= */
-
     #home {
       display: block;
     }
@@ -94,10 +89,6 @@
       margin-bottom: 25px;
       color: #5f5142;
     }
-
-    /* =========================
-       ZONE DU DÉFI
-    ========================= */
 
     #challenge {
       display: none;
@@ -120,24 +111,32 @@
       }
     }
 
-    .challenge-number {
+    .category {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
       font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #a17a4c;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      background: #f1e5d2;
+      color: #674a2c;
     }
 
     .challenge-title {
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(27px, 7vw, 36px);
       color: #33271c;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
-    /* =========================
-       IMAGE DU DÉFI
-    ========================= */
+    .players {
+      font-size: 15px;
+      font-weight: bold;
+      color: #79624a;
+      margin-bottom: 18px;
+    }
 
     .image-container {
       width: 100%;
@@ -165,10 +164,6 @@
       line-height: 1.5;
     }
 
-    /* =========================
-       DESCRIPTION
-    ========================= */
-
     .scene-description {
       background: #f7f0e4;
       border: 1px solid #dbc39f;
@@ -195,12 +190,19 @@
     .instruction {
       font-size: 18px;
       line-height: 1.55;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
-    /* =========================
-       BOUTONS
-    ========================= */
+    .bonus {
+      display: none;
+      background: #fff5ce;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.45;
+      color: #6d572a;
+    }
 
     .button {
       width: 100%;
@@ -210,9 +212,7 @@
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+      transition: transform 0.15s ease;
     }
 
     .button:active {
@@ -225,15 +225,10 @@
       box-shadow: 0 7px 18px rgba(120, 80, 35, 0.25);
     }
 
-    .primary:hover {
-      background: #835c34;
-    }
-
     .photo-button {
       display: block;
       width: 100%;
       border: none;
-      text-decoration: none;
       background: #3d7655;
       color: white;
       border-radius: 16px;
@@ -244,18 +239,10 @@
       cursor: pointer;
     }
 
-    .photo-button:hover {
-      background: #326345;
-    }
-
     .secondary {
       background: #f1e5d2;
       color: #674a2c;
       margin-top: 12px;
-    }
-
-    .secondary:hover {
-      background: #e8d7bc;
     }
 
     .intro {
@@ -271,12 +258,7 @@
       color: #907d66;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media (max-width: 480px) {
-
       body {
         padding: 10px;
       }
@@ -298,391 +280,494 @@
         font-size: 17px;
       }
     }
-
   </style>
-
 </head>
 
 <body>
 
   <main class="container">
 
-```
-<section class="card">
+    <section class="card">
 
-  <div class="rings">💍</div>
+      <div class="rings">💍</div>
 
-  <h1>Les Défis des Mariés</h1>
+      <h1>Les Défis des Mariés</h1>
 
-  <p class="subtitle">
-    Votre mission : créer les photos les plus
-    mémorables de cette journée ! 📸
-  </p>
+      <p class="subtitle">
+        Une mission. Une photo. Aucun respect pour votre dignité. 📸
+      </p>
 
-  <div class="divider">
-    <span>♥</span>
-  </div>
+      <div class="divider">
+        <span>♥</span>
+      </div>
 
+      <div id="home">
 
-  <!-- =========================
-       PAGE D'ACCUEIL
-  ========================== -->
+        <h2 class="welcome">
+          Prêts à relever le défi ?
+        </h2>
 
-  <div id="home">
+        <p class="welcome-text">
+          Lancez un défi, reproduisez la scène ou la situation
+          et immortalisez le résultat.
+          <br><br>
+          Plus c'est absurde, mieux c'est.
+        </p>
 
-    <h2 class="welcome">
-      Prêts à relever le défi ?
-    </h2>
+        <button class="button primary" onclick="lancerDefi()">
+          🎲 LANCER UN DÉFI
+        </button>
 
-    <p class="welcome-text">
-      Scannez le QR code, découvrez une scène à reproduire
-      et faites votre meilleure photo !
-      <br><br>
-      Plus c'est drôle, mieux c'est. 😎
-    </p>
-
-    <button
-      class="button primary"
-      onclick="lancerDefi()">
-
-      🎲 LANCER UN DÉFI
-
-    </button>
-
-    <p class="intro">
-      📸 Pensez à prendre la photo avant de passer au défi suivant !
-    </p>
-
-  </div>
-
-
-  <!-- =========================
-       ZONE DU DÉFI
-  ========================== -->
-
-  <div id="challenge">
-
-    <div
-      class="challenge-number"
-      id="challengeNumber">
-
-      DÉFI #1
-
-    </div>
-
-
-    <h2
-      class="challenge-title"
-      id="challengeTitle">
-
-      Mission secrète
-
-    </h2>
-
-
-    <!-- IMAGE -->
-
-    <div class="image-container">
-
-      <img
-        id="challengeImage"
-        class="challenge-image"
-        src=""
-        alt="Image du défi">
-
-      <div
-        id="imageError"
-        class="image-error">
-
-        ⚠️ L'image de ce défi n'a pas pu être chargée.
+        <p class="intro">
+          Certaines missions nécessitent plusieurs personnes.
+          N'hésitez pas à recruter autour de vous.
+        </p>
 
       </div>
 
+      <div id="challenge">
+
+        <div class="category" id="category">
+          🎬 SCÈNE CULTE
+        </div>
+
+        <h2 class="challenge-title" id="challengeTitle">
+          Mission secrète
+        </h2>
+
+        <div class="players" id="players">
+          👥 2 personnes
+        </div>
+
+        <div class="image-container" id="imageContainer">
+
+          <img
+            id="challengeImage"
+            class="challenge-image"
+            src=""
+            alt="Image du défi">
+
+          <div id="imageError" class="image-error">
+            ⚠️ L'image de ce défi n'a pas pu être chargée.
+          </div>
+
+        </div>
+
+        <div class="scene-description">
+
+          <strong>🎬 Mission</strong>
+
+          <p id="sceneDescription">
+            Reproduisez cette scène !
+          </p>
+
+        </div>
+
+        <p class="instruction" id="challengeText">
+          À vous de jouer !
+        </p>
+
+        <div class="bonus" id="bonus"></div>
+
+        <button class="photo-button" onclick="prendrePhoto()">
+          📸 J'AI FAIT LE DÉFI !
+        </button>
+
+        <button class="button secondary" onclick="lancerDefi()">
+          🎲 NOUVEAU DÉFI
+        </button>
+
+      </div>
+
+    </section>
+
+    <div class="footer">
+      Une journée • Des souvenirs • Beaucoup de dossiers compromettants ❤️
     </div>
-
-
-    <!-- DESCRIPTION -->
-
-    <div class="scene-description">
-
-      <strong>🎬 La scène</strong>
-
-      <p id="sceneDescription">
-        Reproduisez cette scène !
-      </p>
-
-    </div>
-
-
-    <!-- INSTRUCTION -->
-
-    <p
-      class="instruction"
-      id="challengeText">
-
-      À vous de jouer !
-
-    </p>
-
-
-    <!-- BOUTON PHOTO -->
-
-    <button
-      class="photo-button"
-      onclick="prendrePhoto()">
-
-      📸 J'AI FAIT LE DÉFI !
-
-    </button>
-
-
-    <!-- NOUVEAU DÉFI -->
-
-    <button
-      class="button secondary"
-      onclick="lancerDefi()">
-
-      🎲 NOUVEAU DÉFI
-
-    </button>
-
-  </div>
-
-</section>
-
-
-<div class="footer">
-  Une journée • Des souvenirs • Beaucoup de photos ❤️
-</div>
-```
 
   </main>
 
   <script>
 
-    /*
-     * ==================================================
-     * LISTE DES DÉFIS
-     * ==================================================
-     *
-     * IMPORTANT :
-     *
-     * Les images doivent être placées dans le dossier :
-     *
-     * images/
-     *
-     * Exemple :
-     *
-     * images/titanic.jpg
-     * images/rocky.jpg
-     * images/matrix.jpg
-     *
-     * Le nom indiqué ci-dessous doit être EXACTEMENT
-     * le même que le nom du fichier dans GitHub.
-     */
-
-
     const defis = [
+
+      /* ==================================================
+         SCÈNES DE FILMS
+      ================================================== */
 
       {
         titre: "Titanic 🚢",
-
+        categorie: "❤️ DÉFI LOVE",
+        personnes: "👥 2 personnes",
         image: "images/titanic.jpg",
-
         description:
-          "Reproduisez la scène de ce film culte.",
-
+          "Reproduisez Jack et Rose aussi fidèlement que possible.",
         texte:
-          "Regard dramatique obligatoire !"
+          "Même position, même regard et même intensité dramatique.",
+        bonus:
+          "⭐ Bonus : trouvez le décor le moins romantique possible."
       },
 
-
       {
-        titre: "Rocky 🥊",
-
-        image: "images/rocky.jpg",
-
+        titre: "Jurassic Park 🦖",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 3 personnes ou +",
+        image: "images/jurassic-park.jpg",
         description:
-          "Reproduisez la pose du champion après son entraînement.",
-
+          "Quelque chose d'énorme vous poursuit.",
         texte:
-          "Trouvez vos propres marches et prenez la pose du champion !"
+          "Courez comme si votre vie en dépendait. Le dinosaure sera évidemment invisible sur votre photo.",
+        bonus:
+          "⭐ Bonus : quelqu'un abandonne lâchement les autres."
       },
 
-
       {
-        titre: "Mission Impossible 🕶️",
-
-        image: "images/mission-impossible.jpg",
-
+        titre: "La Boum 🎧",
+        categorie: "❤️ DÉFI LOVE",
+        personnes: "👥 2 personnes",
+        image: "images/la-boum.jpg",
         description:
-          "Votre équipe vient de recevoir une mission ultra-secrète.",
-
+          "Reproduisez la célèbre scène du slow.",
         texte:
-          "Prenez une photo très sérieuse comme si votre vie en dépendait."
+          "Casque sur les oreilles, proximité maximale et romantisme années 80 obligatoire."
       },
 
-
       {
-        titre: "Le Parrain 🍝",
-
-        image: "images/le-parrain.jpg",
-
+        titre: "Men in Black 🕴️",
+        categorie: "👥 DÉFI DE GROUPE",
+        personnes: "👥 3 à 6 personnes",
+        image: "images/men-in-black.jpg",
         description:
-          "Une photo de famille beaucoup trop sérieuse.",
-
+          "Formez une équipe d'agents secrets parfaitement sérieux.",
         texte:
-          "Tout le monde doit avoir l'air extrêmement important."
+          "Costumes, lunettes si possible et absolument aucun sourire.",
+        bonus:
+          "⭐ Bonus : une personne regarde ailleurs comme si elle venait de voir un extraterrestre."
       },
 
+      {
+        titre: "James Bond 🍸",
+        categorie: "😎 SCÈNE CULTE",
+        personnes: "👥 2 personnes",
+        image: "images/james-bond.jpg",
+        description:
+          "Reproduisez une scène chic façon espion britannique.",
+        texte:
+          "Une personne joue Bond, l'autre la Bond Girl. Élégance et sérieux disproportionnés."
+      },
 
       {
-        titre: "Matrix 🕴️",
+        titre: "Very Bad Trip 🍻",
+        categorie: "👥 DÉFI DE GROUPE",
+        personnes: "👥 3 à 5 personnes",
+        image: "images/very-bad-trip.jpg",
+        description:
+          "Transformez votre groupe en Wolfpack.",
+        texte:
+          "Faites comme si vous veniez de vivre la pire nuit de votre existence.",
+        bonus:
+          "⭐ Bonus : une personne semble ne rien comprendre à la situation."
+      },
 
+      {
+        titre: "Retour vers le futur ⚡",
+        categorie: "🎬 SCÈNE CULTE",
+        personnes: "👥 2 personnes",
+        image: "images/retour-vers-le-futur.jpg",
+        description:
+          "Marty et Doc viennent de comprendre que quelque chose tourne très mal.",
+        texte:
+          "Trouvez une voiture et prenez votre meilleure expression de panique temporelle."
+      },
+
+      {
+        titre: "Kill Bill 🟡",
+        categorie: "🎬 SCÈNE CULTE",
+        personnes: "👥 1 à 3 personnes",
+        image: "images/kill-bill.jpg",
+        description:
+          "Reproduisez une pose de Beatrix Kiddo.",
+        texte:
+          "Une personne doit dominer la scène pendant que les autres jouent des adversaires très malchanceux."
+      },
+
+      {
+        titre: "Harry Potter ⚡",
+        categorie: "🎬 SCÈNE CULTE",
+        personnes: "👥 2 personnes",
+        image: "images/harry-potter.jpg",
+        description:
+          "Un duel de sorciers vient de commencer.",
+        texte:
+          "Trouvez deux baguettes improvisées et prenez la pose la plus dramatique possible.",
+        bonus:
+          "⭐ Bonus : une troisième personne joue la victime collatérale du sort."
+      },
+
+      {
+        titre: "Matrix 🕶️",
+        categorie: "🎬 SCÈNE CULTE",
+        personnes: "👥 1 à 3 personnes",
         image: "images/matrix.jpg",
-
         description:
-          "Reproduisez une scène au ralenti façon Matrix.",
-
+          "Reproduisez l'esquive mythique de Neo.",
         texte:
-          "Inclinez-vous en arrière et faites comme si vous esquiviez des balles."
+          "Penchez-vous au maximum sans tomber. Les autres peuvent jouer les agents."
+      },
+
+      {
+        titre: "The Mask 🟢",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 1 à 3 personnes",
+        image: "images/the-mask.jpg",
+        description:
+          "Votre visage vient de découvrir qu'il n'existe plus aucune limite.",
+        texte:
+          "Expression totalement excessive obligatoire. Les autres doivent rester parfaitement sérieux."
+      },
+
+      {
+        titre: "Taxi 🚕",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 2 à 4 personnes",
+        image: "images/taxi.jpg",
+        description:
+          "Vous êtes dans la voiture la plus rapide de Marseille.",
+        texte:
+          "Le conducteur est parfaitement détendu. Les passagers sont absolument terrorisés."
+      },
+
+      {
+        titre: "Wayne's World 🤘",
+        categorie: "👥 DÉFI DE GROUPE",
+        personnes: "👥 2 à 5 personnes",
+        image: "images/waynes-world.jpg",
+        description:
+          "Votre groupe de rock vient enfin de percer.",
+        texte:
+          "Posez comme si votre premier album allait révolutionner l'histoire de la musique."
+      },
+
+      {
+        titre: "Star Wars ⭐",
+        categorie: "🎬 SCÈNE CULTE",
+        personnes: "👥 2 à 4 personnes",
+        image: "images/star-wars.jpg",
+        description:
+          "Reproduisez une scène digne d'une galaxie très lointaine.",
+        texte:
+          "Sabres laser improvisés, poses héroïques et sérieux absolu."
+      },
+
+      {
+        titre: "Pirates des Caraïbes 🏴‍☠️",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 2 à 5 personnes",
+        image: "images/pirates-des-caraibes.jpg",
+        description:
+          "Votre équipage vient de perdre tout contrôle.",
+        texte:
+          "Une personne joue Jack Sparrow. Les autres composent un équipage particulièrement douteux."
       },
 
 
+      /* ==================================================
+         DÉFIS ABSURDES
+      ================================================== */
+
       {
-        titre: "Les Avengers 🦸",
-
-        image: "images/avengers.jpg",
-
+        titre: "La photo parfaite… presque 📸",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 4 personnes ou +",
+        image: "",
         description:
-          "Formez votre propre équipe de super-héros.",
-
+          "Faites une magnifique photo de groupe.",
         texte:
-          "Pose héroïque obligatoire. Plus vous êtes nombreux, mieux c'est !"
+          "Une seule personne doit discrètement saboter la photo sans que cela soit trop évident."
       },
 
-
       {
-        titre: "Danse de film 💃",
-
-        image: "images/danse.jpg",
-
+        titre: "Le garde du corps 🕶️",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 4 personnes ou +",
+        image: "",
         description:
-          "Reproduisez une pose de danse extrêmement célèbre.",
-
+          "Choisissez la personne la moins célèbre du groupe.",
         texte:
-          "Choisissez une pose de film que tout le monde reconnaîtra."
+          "Traitez-la comme une superstar mondiale entourée de son service de sécurité.",
+        bonus:
+          "⭐ Bonus : faites semblant d'écarter un paparazzi."
       },
 
-
       {
-        titre: "Photo de famille 👨‍👩‍👧‍👦",
-
-        image: "images/famille.jpg",
-
+        titre: "Catastrophe hors champ 😱",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 3 personnes ou +",
+        image: "",
         description:
-          "Faites la photo de famille la plus bizarre possible.",
-
+          "Quelque chose de terrifiant vient de se produire hors de la photo.",
         texte:
-          "Plus les positions sont improbables, meilleur sera le résultat !"
+          "Tout le monde regarde exactement au même endroit avec une expression différente de panique."
       },
 
-
       {
-        titre: "Le héros et les figurants ⭐",
-
-        image: "images/heros.jpg",
-
+        titre: "Pochette d'album 🎤",
+        categorie: "👥 DÉFI DE GROUPE",
+        personnes: "👥 4 personnes ou +",
+        image: "",
         description:
-          "Une personne doit être le héros de la photo.",
-
+          "Vous venez de former le groupe le plus dangereux de France.",
         texte:
-          "Tous les autres doivent prendre des poses ridicules autour de lui."
+          "Aucun sourire autorisé. Prenez-vous beaucoup trop au sérieux."
       },
 
+      {
+        titre: "Réunion de crise 🥂",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 3 personnes ou +",
+        image: "",
+        description:
+          "Quelqu'un vient d'annoncer qu'il n'y a plus de champagne.",
+        texte:
+          "Photographiez l'instant exact où votre monde s'effondre."
+      },
 
       {
-        titre: "Freeze ! 🥶",
-
-        image: "images/freeze.jpg",
-
+        titre: "Le gourou 🧘",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 4 personnes ou +",
+        image: "",
         description:
-          "Tout le monde doit se figer au même moment.",
-
+          "Une personne vient de révéler une vérité fondamentale.",
         texte:
-          "Imaginez que quelqu'un vient de crier STOP pendant une scène d'action."
+          "Les autres doivent la contempler comme si elle venait de changer leur vie."
+      },
+
+      {
+        titre: "Le complot 🤫",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 3 personnes ou +",
+        image: "",
+        description:
+          "Vous préparez quelque chose de très louche.",
+        texte:
+          "Faites croire que vous complotez derrière le dos des mariés.",
+        bonus:
+          "⭐ Bonus : l'un d'entre vous doit surveiller si quelqu'un arrive."
+      },
+
+      {
+        titre: "La relique sacrée 🗿",
+        categorie: "👥 DÉFI DE GROUPE",
+        personnes: "👥 5 personnes ou +",
+        image: "",
+        description:
+          "Choisissez l'objet le plus banal possible.",
+        texte:
+          "Posez-le au centre et vénérez-le comme s'il s'agissait de la relique la plus précieuse de l'humanité."
+      },
+
+      {
+        titre: "Le Titanic low-cost 🚢",
+        categorie: "🤪 DÉFI DÉCALÉ",
+        personnes: "👥 2 personnes",
+        image: "",
+        description:
+          "Trouvez l'endroit le moins romantique possible.",
+        texte:
+          "Et réalisez-y la photo de couple la plus romantique de votre vie."
+      },
+
+      {
+        titre: "L'évolution de la soirée 🍾",
+        categorie: "👥 DÉFI DE GROUPE",
+        personnes: "👥 5 personnes ou +",
+        image: "",
+        description:
+          "Alignez-vous par ordre de dégradation.",
+        texte:
+          "À gauche : début de mariage impeccable. À droite : trois jours à Ibiza."
       }
-
     ];
 
 
-    /*
-     * ==================================================
-     * VARIABLES
-     * ==================================================
-     */
+    /* ==================================================
+       DÉFI LÉGENDAIRE
+    ================================================== */
+
+    const defiLegendaire = {
+      titre: "Le Défi Légendaire 🏆",
+      categorie: "🏆 DÉFI LÉGENDAIRE",
+      personnes: "👥 LE PLUS DE MONDE POSSIBLE",
+      image: "",
+      description:
+        "Vous avez tiré le défi le plus rare du mariage.",
+      texte:
+        "Réunissez le maximum d'invités autour des mariés sans leur expliquer pourquoi. Tout le monde regarde les mariés. Les mariés, eux, regardent l'objectif.",
+      bonus:
+        "❤️ Une seule photo. Faites-en une qu'ils auront envie de garder longtemps."
+    };
+
 
     let dernierDefi = -1;
 
 
-    /*
-     * ==================================================
-     * LANCER UN DÉFI
-     * ==================================================
-     */
-
     function lancerDefi() {
 
-      let nouveauDefi;
-
-
       /*
-       * On choisit un défi au hasard.
-       *
-       * On empêche le même défi d'apparaître
-       * deux fois de suite.
+       * Environ 1 chance sur 20
+       * de tomber sur le défi légendaire.
        */
 
-      do {
+      const legendaire = Math.random() < 0.05;
 
-        nouveauDefi =
-          Math.floor(Math.random() * defis.length);
+      let defi;
 
+
+      if (legendaire) {
+
+        defi = defiLegendaire;
+
+      } else {
+
+        let nouveauDefi;
+
+        do {
+
+          nouveauDefi =
+            Math.floor(Math.random() * defis.length);
+
+        } while (
+          nouveauDefi === dernierDefi &&
+          defis.length > 1
+        );
+
+        dernierDefi = nouveauDefi;
+
+        defi = defis[nouveauDefi];
       }
 
-      while (
-        nouveauDefi === dernierDefi &&
-        defis.length > 1
-      );
 
-
-      dernierDefi = nouveauDefi;
-
-
-      const defi = defis[nouveauDefi];
-
-
-      /*
-       * Mise à jour du numéro
-       */
-
-      document.getElementById("challengeNumber")
-        .textContent =
-        "DÉFI #" + (nouveauDefi + 1);
-
-
-      /*
-       * Mise à jour du titre
-       */
+      document.getElementById("category")
+        .textContent = defi.categorie;
 
       document.getElementById("challengeTitle")
-        .textContent =
-        defi.titre;
+        .textContent = defi.titre;
+
+      document.getElementById("players")
+        .textContent = defi.personnes;
+
+      document.getElementById("sceneDescription")
+        .textContent = defi.description;
+
+      document.getElementById("challengeText")
+        .textContent = defi.texte;
 
 
-      /*
-       * Mise à jour de l'image
-       */
+      /* IMAGE */
+
+      const imageContainer =
+        document.getElementById("imageContainer");
 
       const image =
         document.getElementById("challengeImage");
@@ -691,63 +776,56 @@
         document.getElementById("imageError");
 
 
-      imageError.style.display = "none";
+      if (defi.image && defi.image !== "") {
 
-      image.style.display = "block";
+        imageContainer.style.display = "block";
 
-      image.src = defi.image;
+        image.style.display = "block";
 
-      image.alt =
-        "Image du défi : " + defi.titre;
+        imageError.style.display = "none";
 
+        image.src = defi.image;
 
-      /*
-       * Si l'image n'existe pas,
-       * on affiche un message.
-       */
-
-      image.onerror = function() {
-
-        image.style.display = "none";
-
-        imageError.style.display = "block";
-
-      };
+        image.alt = "Image du défi : " + defi.titre;
 
 
-      /*
-       * Mise à jour de la description
-       */
+        image.onerror = function() {
 
-      document.getElementById("sceneDescription")
-        .textContent =
-        defi.description;
+          image.style.display = "none";
 
+          imageError.style.display = "block";
 
-      /*
-       * Mise à jour de l'instruction
-       */
+        };
 
-      document.getElementById("challengeText")
-        .textContent =
-        defi.texte;
+      } else {
+
+        imageContainer.style.display = "none";
+      }
 
 
-      /*
-       * Affichage du défi
-       */
+      /* BONUS */
+
+      const bonus =
+        document.getElementById("bonus");
+
+      if (defi.bonus) {
+
+        bonus.textContent = defi.bonus;
+
+        bonus.style.display = "block";
+
+      } else {
+
+        bonus.style.display = "none";
+      }
+
 
       document.getElementById("home")
         .style.display = "none";
 
-
       document.getElementById("challenge")
         .classList.add("active");
 
-
-      /*
-       * Retour en haut de la page
-       */
 
       window.scrollTo({
         top: 0,
@@ -757,25 +835,12 @@
     }
 
 
-    /*
-     * ==================================================
-     * BOUTON "J'AI FAIT LE DÉFI"
-     * ==================================================
-     *
-     * Pour le moment, ce bouton affiche un message.
-     *
-     * Nous pourrons ensuite le remplacer par un véritable
-     * système permettant aux invités d'envoyer leur photo.
-     */
-
     function prendrePhoto() {
 
       alert(
         "📸 BRAVO !\n\n" +
         "Défi réalisé ! 🎉\n\n" +
-        "Dans la prochaine version, " +
-        "nous allons connecter ce bouton " +
-        "à l'envoi de votre photo."
+        "Pensez à envoyer la photo sur le groupe du mariage."
       );
 
     }
