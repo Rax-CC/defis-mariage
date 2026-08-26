@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Les Défis des Mariés 💍</title>
+
+  <meta name="description" content="Les défis photos des mariés !">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #fff9ed 0%, #f6e7c9 50%, #e6cfa4 100%);
+      color: #2d241b;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 28px;
+      padding: 30px 22px;
+      box-shadow: 0 15px 45px rgba(70, 45, 20, 0.18);
+    }
+
+    .rings {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 8vw, 52px);
+      color: #8c6339;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #6f6254;
+      margin-bottom: 25px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: #c19a61;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      background: #dbc39f;
+      flex: 1;
+    }
+
+    /* =========================
+       ACCUEIL
+    ========================= */
+
+    #home {
+      display: block;
+    }
+
+    .welcome {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .welcome-text {
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #5f5142;
+    }
+
+    /* =========================
+       ZONE DU DÉFI
+    ========================= */
+
+    #challenge {
+      display: none;
+      animation: apparition 0.45s ease;
+    }
+
+    #challenge.active {
+      display: block;
+    }
+
+    @keyframes apparition {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .challenge-number {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #a17a4c;
+      margin-bottom: 10px;
+    }
+
+    .challenge-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(27px, 7vw, 36px);
+      color: #33271c;
+      margin-bottom: 15px;
+    }
+
+    /* =========================
+       IMAGE DU DÉFI
+    ========================= */
+
+    .image-container {
+      width: 100%;
+      margin: 0 auto 20px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #eee4d4;
+      box-shadow: 0 8px 25px rgba(70, 45, 20, 0.15);
+    }
+
+    .challenge-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
+      object-fit: contain;
+      background: #eee4d4;
+    }
+
+    .image-error {
+      display: none;
+      padding: 30px 15px;
+      color: #8c6339;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       DESCRIPTION
+    ========================= */
+
+    .scene-description {
+      background: #f7f0e4;
+      border: 1px solid #dbc39f;
+      border-radius: 18px;
+      padding: 18px 15px;
+      margin-bottom: 18px;
+    }
+
+    .scene-description strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #8c6339;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .scene-description p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #5f5142;
+    }
+
+    .instruction {
+      font-size: 18px;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    /* =========================
+       BOUTONS
+    ========================= */
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      padding: 17px 20px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    .button:active {
+      transform: scale(0.97);
+    }
+
+    .primary {
+      background: #9b7042;
+      color: white;
+      box-shadow: 0 7px 18px rgba(120, 80, 35, 0.25);
+    }
+
+    .primary:hover {
+      background: #835c34;
+    }
+
+    .photo-button {
+      display: block;
+      width: 100%;
+      border: none;
+      text-decoration: none;
+      background: #3d7655;
+      color: white;
+      border-radius: 16px;
+      padding: 17px 20px;
+      margin-top: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .photo-button:hover {
+      background: #326345;
+    }
+
+    .secondary {
+      background: #f1e5d2;
+      color: #674a2c;
+      margin-top: 12px;
+    }
+
+    .secondary:hover {
+      background: #e8d7bc;
+    }
+
+    .intro {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #82715d;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #907d66;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 25px 16px;
+        border-radius: 22px;
+      }
+
+      .challenge-image {
+        max-height: 60vh;
+      }
+
+      .challenge-title {
+        font-size: 28px;
+      }
+
+      .instruction {
+        font-size: 17px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <main class="container">
+
+```
+<section class="card">
+
+  <div class="rings">💍</div>
+
+  <h1>Les Défis des Mariés</h1>
+
+  <p class="subtitle">
+    Votre mission : créer les photos les plus
+    mémorables de cette journée ! 📸
+  </p>
+
+  <div class="divider">
+    <span>♥</span>
+  </div>
+
+
+  <!-- =========================
+       PAGE D'ACCUEIL
+  ========================== -->
+
+  <div id="home">
+
+    <h2 class="welcome">
+      Prêts à relever le défi ?
+    </h2>
+
+    <p class="welcome-text">
+      Scannez le QR code, découvrez une scène à reproduire
+      et faites votre meilleure photo !
+      <br><br>
+      Plus c'est drôle, mieux c'est. 😎
+    </p>
+
+    <button
+      class="button primary"
+      onclick="lancerDefi()">
+
+      🎲 LANCER UN DÉFI
+
+    </button>
+
+    <p class="intro">
+      📸 Pensez à prendre la photo avant de passer au défi suivant !
+    </p>
+
+  </div>
+
+
+  <!-- =========================
+       ZONE DU DÉFI
+  ========================== -->
+
+  <div id="challenge">
+
+    <div
+      class="challenge-number"
+      id="challengeNumber">
+
+      DÉFI #1
+
+    </div>
+
+
+    <h2
+      class="challenge-title"
+      id="challengeTitle">
+
+      Mission secrète
+
+    </h2>
+
+
+    <!-- IMAGE -->
+
+    <div class="image-container">
+
+      <img
+        id="challengeImage"
+        class="challenge-image"
+        src=""
+        alt="Image du défi">
+
+      <div
+        id="imageError"
+        class="image-error">
+
+        ⚠️ L'image de ce défi n'a pas pu être chargée.
+
+      </div>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+
+    <div class="scene-description">
+
+      <strong>🎬 La scène</strong>
+
+      <p id="sceneDescription">
+        Reproduisez cette scène !
+      </p>
+
+    </div>
+
+
+    <!-- INSTRUCTION -->
+
+    <p
+      class="instruction"
+      id="challengeText">
+
+      À vous de jouer !
+
+    </p>
+
+
+    <!-- BOUTON PHOTO -->
+
+    <button
+      class="photo-button"
+      onclick="prendrePhoto()">
+
+      📸 J'AI FAIT LE DÉFI !
+
+    </button>
+
+
+    <!-- NOUVEAU DÉFI -->
+
+    <button
+      class="button secondary"
+      onclick="lancerDefi()">
+
+      🎲 NOUVEAU DÉFI
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<div class="footer">
+  Une journée • Des souvenirs • Beaucoup de photos ❤️
+</div>
+```
+
+  </main>
+
+  <script>
+
+    /*
+     * ==================================================
+     * LISTE DES DÉFIS
+     * ==================================================
+     *
+     * IMPORTANT :
+     *
+     * Les images doivent être placées dans le dossier :
+     *
+     * images/
+     *
+     * Exemple :
+     *
+     * images/titanic.jpg
+     * images/rocky.jpg
+     * images/matrix.jpg
+     *
+     * Le nom indiqué ci-dessous doit être EXACTEMENT
+     * le même que le nom du fichier dans GitHub.
+     */
+
+
+    const defis = [
+
+      {
+        titre: "Titanic 🚢",
+
+        image: "images/titanic.jpg",
+
+        description:
+          "Reproduisez la célèbre scène à l'avant du bateau.",
+
+        texte:
+          "Une personne joue Jack, une autre Rose. Bras écartés et regard dramatique obligatoire !"
+      },
+
+
+      {
+        titre: "Rocky 🥊",
+
+        image: "images/rocky.jpg",
+
+        description:
+          "Reproduisez la pose du champion après son entraînement.",
+
+        texte:
+          "Trouvez vos propres marches et prenez la pose du champion !"
+      },
+
+
+      {
+        titre: "Mission Impossible 🕶️",
+
+        image: "images/mission-impossible.jpg",
+
+        description:
+          "Votre équipe vient de recevoir une mission ultra-secrète.",
+
+        texte:
+          "Prenez une photo très sérieuse comme si votre vie en dépendait."
+      },
+
+
+      {
+        titre: "Le Parrain 🍝",
+
+        image: "images/le-parrain.jpg",
+
+        description:
+          "Une photo de famille beaucoup trop sérieuse.",
+
+        texte:
+          "Tout le monde doit avoir l'air extrêmement important."
+      },
+
+
+      {
+        titre: "Matrix 🕴️",
+
+        image: "images/matrix.jpg",
+
+        description:
+          "Reproduisez une scène au ralenti façon Matrix.",
+
+        texte:
+          "Inclinez-vous en arrière et faites comme si vous esquiviez des balles."
+      },
+
+
+      {
+        titre: "Les Avengers 🦸",
+
+        image: "images/avengers.jpg",
+
+        description:
+          "Formez votre propre équipe de super-héros.",
+
+        texte:
+          "Pose héroïque obligatoire. Plus vous êtes nombreux, mieux c'est !"
+      },
+
+
+      {
+        titre: "Danse de film 💃",
+
+        image: "images/danse.jpg",
+
+        description:
+          "Reproduisez une pose de danse extrêmement célèbre.",
+
+        texte:
+          "Choisissez une pose de film que tout le monde reconnaîtra."
+      },
+
+
+      {
+        titre: "Photo de famille 👨‍👩‍👧‍👦",
+
+        image: "images/famille.jpg",
+
+        description:
+          "Faites la photo de famille la plus bizarre possible.",
+
+        texte:
+          "Plus les positions sont improbables, meilleur sera le résultat !"
+      },
+
+
+      {
+        titre: "Le héros et les figurants ⭐",
+
+        image: "images/heros.jpg",
+
+        description:
+          "Une personne doit être le héros de la photo.",
+
+        texte:
+          "Tous les autres doivent prendre des poses ridicules autour de lui."
+      },
+
+
+      {
+        titre: "Freeze ! 🥶",
+
+        image: "images/freeze.jpg",
+
+        description:
+          "Tout le monde doit se figer au même moment.",
+
+        texte:
+          "Imaginez que quelqu'un vient de crier STOP pendant une scène d'action."
+      }
+
+    ];
+
+
+    /*
+     * ==================================================
+     * VARIABLES
+     * ==================================================
+     */
+
+    let dernierDefi = -1;
+
+
+    /*
+     * ==================================================
+     * LANCER UN DÉFI
+     * ==================================================
+     */
+
+    function lancerDefi() {
+
+      let nouveauDefi;
+
+
+      /*
+       * On choisit un défi au hasard.
+       *
+       * On empêche le même défi d'apparaître
+       * deux fois de suite.
+       */
+
+      do {
+
+        nouveauDefi =
+          Math.floor(Math.random() * defis.length);
+
+      }
+
+      while (
+        nouveauDefi === dernierDefi &&
+        defis.length > 1
+      );
+
+
+      dernierDefi = nouveauDefi;
+
+
+      const defi = defis[nouveauDefi];
+
+
+      /*
+       * Mise à jour du numéro
+       */
+
+      document.getElementById("challengeNumber")
+        .textContent =
+        "DÉFI #" + (nouveauDefi + 1);
+
+
+      /*
+       * Mise à jour du titre
+       */
+
+      document.getElementById("challengeTitle")
+        .textContent =
+        defi.titre;
+
+
+      /*
+       * Mise à jour de l'image
+       */
+
+      const image =
+        document.getElementById("challengeImage");
+
+      const imageError =
+        document.getElementById("imageError");
+
+
+      imageError.style.display = "none";
+
+      image.style.display = "block";
+
+      image.src = defi.image;
+
+      image.alt =
+        "Image du défi : " + defi.titre;
+
+
+      /*
+       * Si l'image n'existe pas,
+       * on affiche un message.
+       */
+
+      image.onerror = function() {
+
+        image.style.display = "none";
+
+        imageError.style.display = "block";
+
+      };
+
+
+      /*
+       * Mise à jour de la description
+       */
+
+      document.getElementById("sceneDescription")
+        .textContent =
+        defi.description;
+
+
+      /*
+       * Mise à jour de l'instruction
+       */
+
+      document.getElementById("challengeText")
+        .textContent =
+        defi.texte;
+
+
+      /*
+       * Affichage du défi
+       */
+
+      document.getElementById("home")
+        .style.display = "none";
+
+
+      document.getElementById("challenge")
+        .classList.add("active");
+
+
+      /*
+       * Retour en haut de la page
+       */
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /*
+     * ==================================================
+     * BOUTON "J'AI FAIT LE DÉFI"
+     * ==================================================
+     *
+     * Pour le moment, ce bouton affiche un message.
+     *
+     * Nous pourrons ensuite le remplacer par un véritable
+     * système permettant aux invités d'envoyer leur photo.
+     */
+
+    function prendrePhoto() {
+
+      alert(
+        "📸 BRAVO !\n\n" +
+        "Défi réalisé ! 🎉\n\n" +
+        "Dans la prochaine version, " +
+        "nous allons connecter ce bouton " +
+        "à l'envoi de votre photo."
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
