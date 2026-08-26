@@ -1,852 +1,2194 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Les Défis de Sophie & Guillame 💍</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <meta name="description" content="Les défis photos du mariage">
+  <title>Sophie & Guillaume 💍 | Les Défis du Mariage</title>
+
+  <meta
+    name="description"
+    content="Les défis photos du mariage de Sophie & Guillaume">
 
   <style>
+
+    /* ==================================================
+       BASE — MOBILE FIRST
+    ================================================== */
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, #fff9ed 0%, #f6e7c9 50%, #e6cfa4 100%);
-      color: #2d241b;
-      padding: 20px;
+    html {
+      scroll-behavior: smooth;
     }
 
+    body {
+
+      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top,
+          #fff9ed 0%,
+          #f6e7c9 55%,
+          #e6cfa4 100%
+        );
+
+      color: #2d241b;
+
+      padding:
+        max(8px, env(safe-area-inset-top))
+        max(8px, env(safe-area-inset-right))
+        max(12px, env(safe-area-inset-bottom))
+        max(8px, env(safe-area-inset-left));
+    }
+
+
+    /* ==================================================
+       CONTENEUR
+    ================================================== */
+
     .container {
+
       width: 100%;
+
       max-width: 680px;
-      margin: auto;
+
+      margin: 0 auto;
+
       text-align: center;
     }
 
+
+    /* ==================================================
+       CARTE PRINCIPALE
+    ================================================== */
+
     .card {
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 28px;
-      padding: 30px 22px;
-      box-shadow: 0 15px 45px rgba(70, 45, 20, 0.18);
+
+      width: 100%;
+
+      background:
+        rgba(255, 255, 255, 0.97);
+
+      border-radius: 20px;
+
+      padding: 18px 14px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(70, 45, 20, 0.16);
     }
+
+
+    /* ==================================================
+       EN-TÊTE
+    ================================================== */
 
     .rings {
-      font-size: 42px;
-      margin-bottom: 8px;
+
+      font-size: 32px;
+
+      line-height: 1;
+
+      margin-bottom: 5px;
     }
+
 
     h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(32px, 8vw, 52px);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(27px, 8vw, 38px);
+
+      line-height: 1.08;
+
       color: #8c6339;
-      margin-bottom: 8px;
+
+      margin-bottom: 7px;
     }
+
 
     .subtitle {
-      font-size: 17px;
-      line-height: 1.5;
+
+      max-width: 500px;
+
+      margin:
+        0 auto 14px;
+
+      font-size: 14px;
+
+      line-height: 1.45;
+
       color: #6f6254;
-      margin-bottom: 25px;
     }
 
+
+    /* ==================================================
+       SÉPARATEUR
+    ================================================== */
+
     .divider {
+
       display: flex;
+
       align-items: center;
-      gap: 12px;
-      margin: 20px 0;
+
+      gap: 10px;
+
+      margin: 12px 0 16px;
+
       color: #c19a61;
     }
 
+
     .divider::before,
     .divider::after {
+
       content: "";
+
       height: 1px;
+
       background: #dbc39f;
+
       flex: 1;
     }
+
+
+    /* ==================================================
+       PAGE D'ACCUEIL
+    ================================================== */
 
     #home {
       display: block;
     }
 
+
     .welcome {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 26px;
-      margin-bottom: 18px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 23px;
+
+      line-height: 1.2;
+
+      margin-bottom: 12px;
     }
 
+
     .welcome-text {
-      font-size: 17px;
-      line-height: 1.6;
-      margin-bottom: 25px;
+
+      max-width: 520px;
+
+      margin:
+        0 auto 18px;
+
+      font-size: 15px;
+
+      line-height: 1.5;
+
       color: #5f5142;
     }
 
+
+    /* ==================================================
+       ZONE DU DÉFI
+    ================================================== */
+
     #challenge {
+
       display: none;
-      animation: apparition 0.45s ease;
+
+      animation:
+        apparition 0.35s ease;
     }
+
 
     #challenge.active {
       display: block;
     }
 
+
     @keyframes apparition {
+
       from {
+
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+          translateY(10px);
       }
 
       to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
       }
     }
+
+
+    /* ==================================================
+       CATÉGORIE
+    ================================================== */
 
     .category {
+
       display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      background: #f1e5d2;
-      color: #674a2c;
+
+      max-width: 100%;
+
+      padding:
+        7px 11px;
+
+      border-radius:
+        999px;
+
+      background:
+        #f1e5d2;
+
+      color:
+        #674a2c;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.2;
+
+      font-weight:
+        bold;
+
+      letter-spacing:
+        0.8px;
+
+      text-transform:
+        uppercase;
+
+      margin-bottom:
+        9px;
     }
+
+
+    /* ==================================================
+       TITRE DU DÉFI
+    ================================================== */
 
     .challenge-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(27px, 7vw, 36px);
-      color: #33271c;
-      margin-bottom: 10px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(25px, 7vw, 32px);
+
+      line-height:
+        1.1;
+
+      color:
+        #33271c;
+
+      margin-bottom:
+        7px;
     }
+
+
+    /* ==================================================
+       NOMBRE DE JOUEURS
+    ================================================== */
 
     .players {
-      font-size: 15px;
-      font-weight: bold;
-      color: #79624a;
-      margin-bottom: 18px;
+
+      display:
+        inline-block;
+
+      padding:
+        5px 10px;
+
+      border-radius:
+        999px;
+
+      background:
+        #faf3e8;
+
+      color:
+        #79624a;
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        12px;
     }
+
+
+    /* ==================================================
+       IMAGE
+    ================================================== */
 
     .image-container {
-      width: 100%;
-      margin: 0 auto 20px;
-      border-radius: 20px;
-      overflow: hidden;
-      background: #eee4d4;
-      box-shadow: 0 8px 25px rgba(70, 45, 20, 0.15);
+
+      width:
+        100%;
+
+      margin:
+        0 auto 13px;
+
+      border-radius:
+        15px;
+
+      overflow:
+        hidden;
+
+      background:
+        #eee4d4;
+
+      box-shadow:
+        0 6px 18px
+        rgba(70, 45, 20, 0.14);
     }
+
 
     .challenge-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 65vh;
-      object-fit: contain;
-      background: #eee4d4;
+
+      display:
+        block;
+
+      width:
+        100%;
+
+      height:
+        auto;
+
+      max-height:
+        48vh;
+
+      object-fit:
+        contain;
+
+      background:
+        #eee4d4;
     }
+
 
     .image-error {
-      display: none;
-      padding: 30px 15px;
-      color: #8c6339;
-      font-size: 15px;
-      line-height: 1.5;
+
+      display:
+        none;
+
+      padding:
+        25px 12px;
+
+      color:
+        #8c6339;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.4;
     }
+
+
+    /* ==================================================
+       DESCRIPTION / MISSION
+    ================================================== */
 
     .scene-description {
-      background: #f7f0e4;
-      border: 1px solid #dbc39f;
-      border-radius: 18px;
-      padding: 18px 15px;
-      margin-bottom: 18px;
+
+      background:
+        #f7f0e4;
+
+      border:
+        1px solid #dbc39f;
+
+      border-radius:
+        14px;
+
+      padding:
+        12px;
+
+      margin-bottom:
+        11px;
     }
+
 
     .scene-description strong {
-      display: block;
-      margin-bottom: 7px;
-      color: #8c6339;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+
+      display:
+        block;
+
+      margin-bottom:
+        5px;
+
+      color:
+        #8c6339;
+
+      font-size:
+        11px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        0.9px;
     }
+
 
     .scene-description p {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #5f5142;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.4;
+
+      color:
+        #5f5142;
     }
+
+
+    /* ==================================================
+       CONSIGNE
+    ================================================== */
 
     .instruction {
-      font-size: 18px;
-      line-height: 1.55;
-      margin-bottom: 18px;
+
+      max-width:
+        550px;
+
+      margin:
+        0 auto 11px;
+
+      font-size:
+        15px;
+
+      line-height:
+        1.45;
     }
+
+
+    /* ==================================================
+       BONUS
+    ================================================== */
 
     .bonus {
-      display: none;
-      background: #fff5ce;
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 20px;
-      font-size: 15px;
-      line-height: 1.45;
-      color: #6d572a;
+
+      display:
+        none;
+
+      background:
+        #fff5ce;
+
+      border-radius:
+        13px;
+
+      padding:
+        11px;
+
+      margin-bottom:
+        12px;
+
+      color:
+        #6d572a;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.4;
     }
 
-    .button {
-      width: 100%;
-      border: none;
-      border-radius: 16px;
-      padding: 17px 20px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.15s ease;
+
+    /* ==================================================
+       BOUTONS
+    ================================================== */
+
+    .button,
+    .photo-button {
+
+      width:
+        100%;
+
+      min-height:
+        52px;
+
+      border:
+        none;
+
+      border-radius:
+        14px;
+
+      padding:
+        14px 16px;
+
+      font-size:
+        16px;
+
+      line-height:
+        1.2;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
+
+      touch-action:
+        manipulation;
+
+      transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        opacity 0.12s ease;
     }
 
-    .button:active {
-      transform: scale(0.97);
+
+    .button:active,
+    .photo-button:active {
+
+      transform:
+        scale(0.98);
     }
+
 
     .primary {
-      background: #9b7042;
-      color: white;
-      box-shadow: 0 7px 18px rgba(120, 80, 35, 0.25);
+
+      background:
+        #9b7042;
+
+      color:
+        white;
+
+      box-shadow:
+        0 6px 16px
+        rgba(120, 80, 35, 0.22);
     }
+
 
     .photo-button {
-      display: block;
-      width: 100%;
-      border: none;
-      background: #3d7655;
-      color: white;
-      border-radius: 16px;
-      padding: 17px 20px;
-      margin-top: 12px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
+
+      display:
+        block;
+
+      background:
+        #3d7655;
+
+      color:
+        white;
+
+      margin-top:
+        8px;
     }
+
 
     .secondary {
-      background: #f1e5d2;
-      color: #674a2c;
-      margin-top: 12px;
+
+      background:
+        #f1e5d2;
+
+      color:
+        #674a2c;
+
+      margin-top:
+        9px;
     }
+
+
+    /* ==================================================
+       TEXTE D'ACCUEIL
+    ================================================== */
 
     .intro {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #82715d;
-      line-height: 1.5;
+
+      margin-top:
+        13px;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.4;
+
+      color:
+        #82715d;
     }
+
+
+    /* ==================================================
+       FOOTER
+    ================================================== */
 
     .footer {
-      margin-top: 18px;
-      font-size: 12px;
-      color: #907d66;
+
+      margin-top:
+        10px;
+
+      padding:
+        0 5px;
+
+      font-size:
+        10px;
+
+      line-height:
+        1.35;
+
+      color:
+        #907d66;
     }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
+
+    /* ==================================================
+       TRÈS PETITS SMARTPHONES
+    ================================================== */
+
+    @media (max-width: 360px) {
 
       .card {
-        padding: 25px 16px;
-        border-radius: 22px;
+
+        padding:
+          15px 11px;
       }
 
-      .challenge-image {
-        max-height: 60vh;
+
+      h1 {
+
+        font-size:
+          26px;
       }
+
+
+      .welcome {
+
+        font-size:
+          21px;
+      }
+
 
       .challenge-title {
-        font-size: 28px;
+
+        font-size:
+          24px;
       }
 
-      .instruction {
-        font-size: 17px;
+
+      .challenge-image {
+
+        max-height:
+          43vh;
+      }
+
+
+      .button,
+      .photo-button {
+
+        font-size:
+          15px;
       }
     }
+
+
+    /* ==================================================
+       SMARTPHONE EN PAYSAGE
+    ================================================== */
+
+    @media
+    (max-height: 550px)
+    and
+    (orientation: landscape) {
+
+      .rings {
+
+        font-size:
+          25px;
+      }
+
+
+      h1 {
+
+        font-size:
+          27px;
+      }
+
+
+      .subtitle,
+      .divider {
+
+        margin-bottom:
+          8px;
+      }
+
+
+      .challenge-image {
+
+        max-height:
+          45vh;
+      }
+    }
+
+
+    /* ==================================================
+       TABLETTES / ÉCRANS PLUS LARGES
+    ================================================== */
+
+    @media (min-width: 600px) {
+
+      body {
+
+        padding:
+          20px;
+      }
+
+
+      .card {
+
+        border-radius:
+          28px;
+
+        padding:
+          28px 24px;
+      }
+
+
+      .rings {
+
+        font-size:
+          42px;
+      }
+
+
+      h1 {
+
+        font-size:
+          46px;
+      }
+
+
+      .subtitle {
+
+        font-size:
+          17px;
+      }
+
+
+      .welcome {
+
+        font-size:
+          27px;
+      }
+
+
+      .welcome-text {
+
+        font-size:
+          17px;
+      }
+
+
+      .category {
+
+        font-size:
+          13px;
+
+        padding:
+          8px 14px;
+      }
+
+
+      .challenge-title {
+
+        font-size:
+          35px;
+      }
+
+
+      .players {
+
+        font-size:
+          15px;
+      }
+
+
+      .challenge-image {
+
+        max-height:
+          62vh;
+      }
+
+
+      .scene-description {
+
+        padding:
+          17px 15px;
+      }
+
+
+      .scene-description p {
+
+        font-size:
+          16px;
+      }
+
+
+      .instruction {
+
+        font-size:
+          18px;
+      }
+
+
+      .bonus {
+
+        font-size:
+          15px;
+
+        padding:
+          14px;
+      }
+
+
+      .button,
+      .photo-button {
+
+        min-height:
+          56px;
+
+        font-size:
+          17px;
+      }
+
+
+      .footer {
+
+        font-size:
+          12px;
+
+        margin-top:
+          17px;
+      }
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <main class="container">
+
 
     <section class="card">
 
-      <div class="rings">💍</div>
 
-      <h1>Les Défis des Mariés</h1>
+      <div class="rings">
+        💍
+      </div>
+
+
+      <h1>
+        Sophie & Guillaume 💍
+      </h1>
+
 
       <p class="subtitle">
-        Une mission. Une photo. Aucun respect pour votre dignité. 📸
+
+        Les défis photos de leur mariage
+
+        <br>
+
+        Une mission. Une photo.
+        Aucun respect pour votre dignité. 📸
+
       </p>
 
+
       <div class="divider">
-        <span>♥</span>
+
+        <span>
+          ♥
+        </span>
+
       </div>
+
+
+      <!-- ==================================================
+           PAGE D'ACCUEIL
+      ================================================== -->
+
 
       <div id="home">
 
+
         <h2 class="welcome">
+
           Prêts à relever le défi ?
+
         </h2>
 
+
         <p class="welcome-text">
-          Lancez un défi, reproduisez la scène ou la situation
+
+          Lancez un défi,
+          reproduisez la scène ou la situation
           et immortalisez le résultat.
+
           <br><br>
-          Plus c'est absurde, mieux c'est.
+
+          Plus c'est absurde,
+          mieux c'est. 😎
+
         </p>
 
-        <button class="button primary" onclick="lancerDefi()">
+
+        <button
+          class="button primary"
+          onclick="lancerDefi()">
+
           🎲 LANCER UN DÉFI
+
         </button>
 
+
         <p class="intro">
+
           Certaines missions nécessitent plusieurs personnes.
-          N'hésitez pas à recruter autour de vous.
+
+          <br>
+
+          N'hésitez pas à recruter autour de vous !
+
         </p>
 
+
       </div>
+
+
+
+      <!-- ==================================================
+           ZONE DU DÉFI
+      ================================================== -->
+
 
       <div id="challenge">
 
-        <div class="category" id="category">
+
+        <div
+          class="category"
+          id="category">
+
           🎬 SCÈNE CULTE
+
         </div>
 
-        <h2 class="challenge-title" id="challengeTitle">
+
+        <h2
+          class="challenge-title"
+          id="challengeTitle">
+
           Mission secrète
+
         </h2>
 
-        <div class="players" id="players">
+
+        <div
+          class="players"
+          id="players">
+
           👥 2 personnes
+
         </div>
 
-        <div class="image-container" id="imageContainer">
+
+
+        <!-- IMAGE -->
+
+
+        <div
+          class="image-container"
+          id="imageContainer">
+
 
           <img
-            id="challengeImage"
-            class="challenge-image"
-            src=""
-            alt="Image du défi">
 
-          <div id="imageError" class="image-error">
-            ⚠️ L'image de ce défi n'a pas pu être chargée.
+            id="challengeImage"
+
+            class="challenge-image"
+
+            src=""
+
+            alt="Image du défi"
+
+          >
+
+
+          <div
+            id="imageError"
+            class="image-error">
+
+            ⚠️ L'image de ce défi
+            n'a pas pu être chargée.
+
           </div>
 
+
         </div>
+
+
+
+        <!-- MISSION -->
+
 
         <div class="scene-description">
 
-          <strong>🎬 Mission</strong>
+
+          <strong>
+
+            🎬 Mission
+
+          </strong>
+
 
           <p id="sceneDescription">
+
             Reproduisez cette scène !
+
           </p>
+
 
         </div>
 
-        <p class="instruction" id="challengeText">
+
+
+        <!-- CONSIGNE -->
+
+
+        <p
+          class="instruction"
+          id="challengeText">
+
           À vous de jouer !
+
         </p>
 
-        <div class="bonus" id="bonus"></div>
 
-        <button class="photo-button" onclick="prendrePhoto()">
+
+        <!-- BONUS -->
+
+
+        <div
+          class="bonus"
+          id="bonus">
+
+        </div>
+
+
+
+        <!-- BOUTONS -->
+
+
+        <button
+          class="photo-button"
+          onclick="prendrePhoto()">
+
           📸 J'AI FAIT LE DÉFI !
+
         </button>
 
-        <button class="button secondary" onclick="lancerDefi()">
+
+        <button
+          class="button secondary"
+          onclick="lancerDefi()">
+
           🎲 NOUVEAU DÉFI
+
         </button>
+
 
       </div>
 
+
     </section>
 
+
+
     <div class="footer">
-      Une journée • Des souvenirs • Beaucoup de dossiers compromettants ❤️
+
+      Une journée •
+      Des souvenirs •
+      Beaucoup de dossiers compromettants ❤️
+
     </div>
+
 
   </main>
 
+
+
   <script>
+
+
+    /* ==================================================
+       LISTE DES DÉFIS
+    ================================================== */
+
 
     const defis = [
 
+
+
       /* ==================================================
-         SCÈNES DE FILMS
+         TITANIC
       ================================================== */
 
+
       {
-        titre: "Titanic 🚢",
-        categorie: "❤️ DÉFI LOVE",
-        personnes: "👥 2 personnes",
-        image: "images/titanic.jpg",
+
+        titre:
+          "Titanic 🚢",
+
+        categorie:
+          "❤️ DÉFI LOVE",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "images/titanic.jpg",
+
         description:
           "Reproduisez Jack et Rose aussi fidèlement que possible.",
+
         texte:
           "Même position, même regard et même intensité dramatique.",
+
         bonus:
           "⭐ Bonus : trouvez le décor le moins romantique possible."
+
       },
 
+
+
+      /* ==================================================
+         JURASSIC PARK
+      ================================================== */
+
+
       {
-        titre: "Jurassic Park 🦖",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 3 personnes ou +",
-        image: "images/jurassic-park.jpg",
+
+        titre:
+          "Jurassic Park 🦖",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 3 personnes ou +",
+
+        image:
+          "images/jurassic-park.jpg",
+
         description:
           "Quelque chose d'énorme vous poursuit.",
+
         texte:
           "Courez comme si votre vie en dépendait. Le dinosaure sera évidemment invisible sur votre photo.",
+
         bonus:
           "⭐ Bonus : quelqu'un abandonne lâchement les autres."
+
       },
 
+
+
+      /* ==================================================
+         LA BOUM
+      ================================================== */
+
+
       {
-        titre: "La Boum 🎧",
-        categorie: "❤️ DÉFI LOVE",
-        personnes: "👥 2 personnes",
-        image: "images/la-boum.jpg",
+
+        titre:
+          "La Boum 🎧",
+
+        categorie:
+          "❤️ DÉFI LOVE",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "images/la-boum.jpg",
+
         description:
           "Reproduisez la célèbre scène du slow.",
+
         texte:
           "Casque sur les oreilles, proximité maximale et romantisme années 80 obligatoire."
+
       },
 
+
+
+      /* ==================================================
+         MEN IN BLACK
+      ================================================== */
+
+
       {
-        titre: "Men in Black 🕴️",
-        categorie: "👥 DÉFI DE GROUPE",
-        personnes: "👥 3 à 6 personnes",
-        image: "images/men-in-black.jpg",
+
+        titre:
+          "Men in Black 🕴️",
+
+        categorie:
+          "👥 DÉFI DE GROUPE",
+
+        personnes:
+          "👥 3 à 6 personnes",
+
+        image:
+          "images/men-in-black.jpg",
+
         description:
           "Formez une équipe d'agents secrets parfaitement sérieux.",
+
         texte:
           "Costumes, lunettes si possible et absolument aucun sourire.",
+
         bonus:
           "⭐ Bonus : une personne regarde ailleurs comme si elle venait de voir un extraterrestre."
+
       },
 
+
+
+      /* ==================================================
+         JAMES BOND
+      ================================================== */
+
+
       {
-        titre: "James Bond 🍸",
-        categorie: "😎 SCÈNE CULTE",
-        personnes: "👥 2 personnes",
-        image: "images/james-bond.jpg",
+
+        titre:
+          "James Bond 🍸",
+
+        categorie:
+          "😎 SCÈNE CULTE",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "images/james-bond.jpg",
+
         description:
           "Reproduisez une scène chic façon espion britannique.",
+
         texte:
           "Une personne joue Bond, l'autre la Bond Girl. Élégance et sérieux disproportionnés."
+
       },
 
+
+
+      /* ==================================================
+         VERY BAD TRIP
+      ================================================== */
+
+
       {
-        titre: "Very Bad Trip 🍻",
-        categorie: "👥 DÉFI DE GROUPE",
-        personnes: "👥 3 à 5 personnes",
-        image: "images/very-bad-trip.jpg",
+
+        titre:
+          "Very Bad Trip 🍻",
+
+        categorie:
+          "👥 DÉFI DE GROUPE",
+
+        personnes:
+          "👥 3 à 5 personnes",
+
+        image:
+          "images/very-bad-trip.jpg",
+
         description:
           "Transformez votre groupe en Wolfpack.",
+
         texte:
           "Faites comme si vous veniez de vivre la pire nuit de votre existence.",
+
         bonus:
           "⭐ Bonus : une personne semble ne rien comprendre à la situation."
+
       },
 
+
+
+      /* ==================================================
+         RETOUR VERS LE FUTUR
+      ================================================== */
+
+
       {
-        titre: "Retour vers le futur ⚡",
-        categorie: "🎬 SCÈNE CULTE",
-        personnes: "👥 2 personnes",
-        image: "images/retour-vers-le-futur.jpg",
+
+        titre:
+          "Retour vers le futur ⚡",
+
+        categorie:
+          "🎬 SCÈNE CULTE",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "images/retour-vers-le-futur.jpg",
+
         description:
           "Marty et Doc viennent de comprendre que quelque chose tourne très mal.",
+
         texte:
           "Trouvez une voiture et prenez votre meilleure expression de panique temporelle."
+
       },
 
+
+
+      /* ==================================================
+         KILL BILL
+      ================================================== */
+
+
       {
-        titre: "Kill Bill 🟡",
-        categorie: "🎬 SCÈNE CULTE",
-        personnes: "👥 1 à 3 personnes",
-        image: "images/kill-bill.jpg",
+
+        titre:
+          "Kill Bill 🟡",
+
+        categorie:
+          "🎬 SCÈNE CULTE",
+
+        personnes:
+          "👥 1 à 3 personnes",
+
+        image:
+          "images/kill-bill.jpg",
+
         description:
           "Reproduisez une pose de Beatrix Kiddo.",
+
         texte:
           "Une personne doit dominer la scène pendant que les autres jouent des adversaires très malchanceux."
+
       },
 
+
+
+      /* ==================================================
+         HARRY POTTER
+      ================================================== */
+
+
       {
-        titre: "Harry Potter ⚡",
-        categorie: "🎬 SCÈNE CULTE",
-        personnes: "👥 2 personnes",
-        image: "images/harry-potter.jpg",
+
+        titre:
+          "Harry Potter ⚡",
+
+        categorie:
+          "🎬 SCÈNE CULTE",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "images/harry-potter.jpg",
+
         description:
           "Un duel de sorciers vient de commencer.",
+
         texte:
           "Trouvez deux baguettes improvisées et prenez la pose la plus dramatique possible.",
+
         bonus:
           "⭐ Bonus : une troisième personne joue la victime collatérale du sort."
+
       },
 
+
+
+      /* ==================================================
+         MATRIX
+      ================================================== */
+
+
       {
-        titre: "Matrix 🕶️",
-        categorie: "🎬 SCÈNE CULTE",
-        personnes: "👥 1 à 3 personnes",
-        image: "images/matrix.jpg",
+
+        titre:
+          "Matrix 🕶️",
+
+        categorie:
+          "🎬 SCÈNE CULTE",
+
+        personnes:
+          "👥 1 à 3 personnes",
+
+        image:
+          "images/matrix.jpg",
+
         description:
           "Reproduisez l'esquive mythique de Neo.",
+
         texte:
           "Penchez-vous au maximum sans tomber. Les autres peuvent jouer les agents."
+
       },
 
+
+
+      /* ==================================================
+         THE MASK
+      ================================================== */
+
+
       {
-        titre: "The Mask 🟢",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 1 à 3 personnes",
-        image: "images/the-mask.jpg",
+
+        titre:
+          "The Mask 🟢",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 1 à 3 personnes",
+
+        image:
+          "images/the-mask.jpg",
+
         description:
           "Votre visage vient de découvrir qu'il n'existe plus aucune limite.",
+
         texte:
           "Expression totalement excessive obligatoire. Les autres doivent rester parfaitement sérieux."
+
       },
 
+
+
+      /* ==================================================
+         TAXI
+      ================================================== */
+
+
       {
-        titre: "Taxi 🚕",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 2 à 4 personnes",
-        image: "images/taxi.jpg",
+
+        titre:
+          "Taxi 🚕",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 2 à 4 personnes",
+
+        image:
+          "images/taxi.jpg",
+
         description:
           "Vous êtes dans la voiture la plus rapide de Marseille.",
+
         texte:
           "Le conducteur est parfaitement détendu. Les passagers sont absolument terrorisés."
+
       },
 
+
+
+      /* ==================================================
+         LE CINQUIÈME ÉLÉMENT
+      ================================================== */
+
+
       {
-        titre: "Le cinquième élément🤘",
-        categorie: "🎬 SCÈNE CULTE",
-        personnes: "👥 2 personnes",
-        image: "images/cinquieme-element.jpg",
+
+        titre:
+          "Le Cinquième Élément 🟠",
+
+        categorie:
+          "🎬 SCÈNE CULTE",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "images/cinquieme-element.jpg",
+
         description:
-          "Reproduisez la scène culte du Multipass",
+          "Reproduisez la mythique scène du Multipass.",
+
         texte:
-          "Leeloo tend son Multipass, Korben Dallas le présente" +
-          "Incontournable."
+          "L'un joue Leeloo et présente fièrement son Multipass. L'autre joue Korben Dallas et prend exactement la même pose que sur l'image.",
+
+        bonus:
+          "⭐ Bonus : fabriquez votre propre Multipass avec ce que vous trouvez sur place."
+
       },
 
+
+
+      /* ==================================================
+         STAR WARS
+      ================================================== */
+
+
       {
-        titre: "Star Wars ⭐",
-        categorie: "🎬 SCÈNE CULTE",
-        personnes: "👥 2 à 4 personnes",
-        image: "images/star-wars.jpg",
+
+        titre:
+          "Star Wars ⭐",
+
+        categorie:
+          "🎬 SCÈNE CULTE",
+
+        personnes:
+          "👥 2 à 4 personnes",
+
+        image:
+          "images/star-wars.jpg",
+
         description:
           "Reproduisez une scène digne d'une galaxie très lointaine.",
+
         texte:
           "Sabres laser improvisés, poses héroïques et sérieux absolu."
+
       },
 
+
+
+      /* ==================================================
+         PIRATES DES CARAÏBES
+      ================================================== */
+
+
       {
-        titre: "Pirates des Caraïbes 🏴‍☠️",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 2 à 5 personnes",
-        image: "images/pirates-des-caraibes.jpg",
+
+        titre:
+          "Pirates des Caraïbes 🏴‍☠️",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 2 à 5 personnes",
+
+        image:
+          "images/pirates-des-caraibes.jpg",
+
         description:
           "Votre équipage vient de perdre tout contrôle.",
+
         texte:
           "Une personne joue Jack Sparrow. Les autres composent un équipage particulièrement douteux."
+
       },
+
 
 
       /* ==================================================
          DÉFIS ABSURDES
       ================================================== */
 
+
       {
-        titre: "La photo parfaite… presque 📸",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 4 personnes ou +",
-        image: "",
+
+        titre:
+          "La photo parfaite… presque 📸",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 4 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Faites une magnifique photo de groupe.",
+
         texte:
           "Une seule personne doit discrètement saboter la photo sans que cela soit trop évident."
+
       },
 
+
       {
-        titre: "Le garde du corps 🕶️",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 4 personnes ou +",
-        image: "",
+
+        titre:
+          "Le garde du corps 🕶️",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 4 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Choisissez la personne la moins célèbre du groupe.",
+
         texte:
           "Traitez-la comme une superstar mondiale entourée de son service de sécurité.",
+
         bonus:
           "⭐ Bonus : faites semblant d'écarter un paparazzi."
+
       },
 
+
       {
-        titre: "Catastrophe hors champ 😱",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 3 personnes ou +",
-        image: "",
+
+        titre:
+          "Catastrophe hors champ 😱",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 3 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Quelque chose de terrifiant vient de se produire hors de la photo.",
+
         texte:
           "Tout le monde regarde exactement au même endroit avec une expression différente de panique."
+
       },
 
+
       {
-        titre: "Pochette d'album 🎤",
-        categorie: "👥 DÉFI DE GROUPE",
-        personnes: "👥 4 personnes ou +",
-        image: "",
+
+        titre:
+          "Pochette d'album 🎤",
+
+        categorie:
+          "👥 DÉFI DE GROUPE",
+
+        personnes:
+          "👥 4 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Vous venez de former le groupe le plus dangereux de France.",
+
         texte:
           "Aucun sourire autorisé. Prenez-vous beaucoup trop au sérieux."
+
       },
 
+
       {
-        titre: "Réunion de crise 🥂",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 3 personnes ou +",
-        image: "",
+
+        titre:
+          "Réunion de crise 🥂",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 3 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Quelqu'un vient d'annoncer qu'il n'y a plus de champagne.",
+
         texte:
           "Photographiez l'instant exact où votre monde s'effondre."
+
       },
 
+
       {
-        titre: "Le gourou 🧘",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 4 personnes ou +",
-        image: "",
+
+        titre:
+          "Le gourou 🧘",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 4 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Une personne vient de révéler une vérité fondamentale.",
+
         texte:
           "Les autres doivent la contempler comme si elle venait de changer leur vie."
+
       },
 
+
       {
-        titre: "Le complot 🤫",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 3 personnes ou +",
-        image: "",
+
+        titre:
+          "Le complot 🤫",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 3 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Vous préparez quelque chose de très louche.",
+
         texte:
           "Faites croire que vous complotez derrière le dos des mariés.",
+
         bonus:
           "⭐ Bonus : l'un d'entre vous doit surveiller si quelqu'un arrive."
+
       },
 
+
       {
-        titre: "La relique sacrée 🗿",
-        categorie: "👥 DÉFI DE GROUPE",
-        personnes: "👥 5 personnes ou +",
-        image: "",
+
+        titre:
+          "La relique sacrée 🗿",
+
+        categorie:
+          "👥 DÉFI DE GROUPE",
+
+        personnes:
+          "👥 5 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Choisissez l'objet le plus banal possible.",
+
         texte:
           "Posez-le au centre et vénérez-le comme s'il s'agissait de la relique la plus précieuse de l'humanité."
+
       },
 
+
       {
-        titre: "Le Titanic low-cost 🚢",
-        categorie: "🤪 DÉFI DÉCALÉ",
-        personnes: "👥 2 personnes",
-        image: "",
+
+        titre:
+          "Le Titanic low-cost 🚢",
+
+        categorie:
+          "🤪 DÉFI DÉCALÉ",
+
+        personnes:
+          "👥 2 personnes",
+
+        image:
+          "",
+
         description:
           "Trouvez l'endroit le moins romantique possible.",
+
         texte:
           "Et réalisez-y la photo de couple la plus romantique de votre vie."
+
       },
 
+
       {
-        titre: "L'évolution de la soirée 🍾",
-        categorie: "👥 DÉFI DE GROUPE",
-        personnes: "👥 5 personnes ou +",
-        image: "",
+
+        titre:
+          "L'évolution de la soirée 🍾",
+
+        categorie:
+          "👥 DÉFI DE GROUPE",
+
+        personnes:
+          "👥 5 personnes ou +",
+
+        image:
+          "",
+
         description:
           "Alignez-vous par ordre de dégradation.",
+
         texte:
           "À gauche : début de mariage impeccable. À droite : trois jours à Ibiza."
+
       }
+
     ];
+
 
 
     /* ==================================================
        DÉFI LÉGENDAIRE
     ================================================== */
 
+
     const defiLegendaire = {
-      titre: "Le Défi Légendaire 🏆",
-      categorie: "🏆 DÉFI LÉGENDAIRE",
-      personnes: "👥 LE PLUS DE MONDE POSSIBLE",
-      image: "",
+
+      titre:
+        "Le Défi Légendaire 🏆",
+
+      categorie:
+        "🏆 DÉFI LÉGENDAIRE",
+
+      personnes:
+        "👥 LE PLUS DE MONDE POSSIBLE",
+
+      image:
+        "",
+
       description:
         "Vous avez tiré le défi le plus rare du mariage.",
+
       texte:
         "Réunissez le maximum d'invités autour des mariés sans leur expliquer pourquoi. Tout le monde regarde les mariés. Les mariés, eux, regardent l'objectif.",
+
       bonus:
         "❤️ Une seule photo. Faites-en une qu'ils auront envie de garder longtemps."
+
     };
+
+
+
+    /* ==================================================
+       VARIABLES
+    ================================================== */
 
 
     let dernierDefi = -1;
 
 
+
+    /* ==================================================
+       LANCER UN DÉFI
+    ================================================== */
+
+
     function lancerDefi() {
+
 
       /*
        * Environ 1 chance sur 20
        * de tomber sur le défi légendaire.
        */
 
-      const legendaire = Math.random() < 0.05;
+
+      const legendaire =
+        Math.random() < 0.05;
+
 
       let defi;
 
 
+
       if (legendaire) {
 
-        defi = defiLegendaire;
+
+        defi =
+          defiLegendaire;
+
 
       } else {
+
 
         let nouveauDefi;
 
+
         do {
 
+
           nouveauDefi =
-            Math.floor(Math.random() * defis.length);
+            Math.floor(
+              Math.random() * defis.length
+            );
+
 
         } while (
-          nouveauDefi === dernierDefi &&
+
+          nouveauDefi === dernierDefi
+
+          &&
+
           defis.length > 1
+
         );
 
-        dernierDefi = nouveauDefi;
 
-        defi = defis[nouveauDefi];
+        dernierDefi =
+          nouveauDefi;
+
+
+        defi =
+          defis[nouveauDefi];
+
       }
 
 
-      document.getElementById("category")
-        .textContent = defi.categorie;
 
-      document.getElementById("challengeTitle")
-        .textContent = defi.titre;
-
-      document.getElementById("players")
-        .textContent = defi.personnes;
-
-      document.getElementById("sceneDescription")
-        .textContent = defi.description;
-
-      document.getElementById("challengeText")
-        .textContent = defi.texte;
+      /* CATÉGORIE */
 
 
-      /* IMAGE */
+      document
+        .getElementById("category")
+        .textContent =
+        defi.categorie;
+
+
+
+      /* TITRE */
+
+
+      document
+        .getElementById("challengeTitle")
+        .textContent =
+        defi.titre;
+
+
+
+      /* PARTICIPANTS */
+
+
+      document
+        .getElementById("players")
+        .textContent =
+        defi.personnes;
+
+
+
+      /* DESCRIPTION */
+
+
+      document
+        .getElementById("sceneDescription")
+        .textContent =
+        defi.description;
+
+
+
+      /* CONSIGNE */
+
+
+      document
+        .getElementById("challengeText")
+        .textContent =
+        defi.texte;
+
+
+
+      /* ==================================================
+         GESTION DE L'IMAGE
+      ================================================== */
+
 
       const imageContainer =
-        document.getElementById("imageContainer");
+        document.getElementById(
+          "imageContainer"
+        );
+
 
       const image =
-        document.getElementById("challengeImage");
+        document.getElementById(
+          "challengeImage"
+        );
+
 
       const imageError =
-        document.getElementById("imageError");
+        document.getElementById(
+          "imageError"
+        );
 
 
-      if (defi.image && defi.image !== "") {
 
-        imageContainer.style.display = "block";
+      if (
 
-        image.style.display = "block";
+        defi.image
 
-        imageError.style.display = "none";
+        &&
 
-        image.src = defi.image;
+        defi.image !== ""
 
-        image.alt = "Image du défi : " + defi.titre;
+      ) {
 
 
-        image.onerror = function() {
+        imageContainer.style.display =
+          "block";
 
-          image.style.display = "none";
 
-          imageError.style.display = "block";
+        image.style.display =
+          "block";
 
-        };
+
+        imageError.style.display =
+          "none";
+
+
+        image.src =
+          defi.image;
+
+
+        image.alt =
+          "Image du défi : " +
+          defi.titre;
+
+
+
+        image.onerror =
+          function () {
+
+
+            image.style.display =
+              "none";
+
+
+            imageError.style.display =
+              "block";
+
+          };
+
 
       } else {
 
-        imageContainer.style.display = "none";
+
+        imageContainer.style.display =
+          "none";
+
       }
 
 
-      /* BONUS */
+
+      /* ==================================================
+         BONUS
+      ================================================== */
+
 
       const bonus =
-        document.getElementById("bonus");
+        document.getElementById(
+          "bonus"
+        );
+
 
       if (defi.bonus) {
 
-        bonus.textContent = defi.bonus;
 
-        bonus.style.display = "block";
+        bonus.textContent =
+          defi.bonus;
+
+
+        bonus.style.display =
+          "block";
+
 
       } else {
 
-        bonus.style.display = "none";
+
+        bonus.style.display =
+          "none";
+
       }
 
 
-      document.getElementById("home")
-        .style.display = "none";
 
-      document.getElementById("challenge")
-        .classList.add("active");
+      /* ==================================================
+         AFFICHAGE DU DÉFI
+      ================================================== */
+
+
+      document
+        .getElementById("home")
+        .style.display =
+        "none";
+
+
+      document
+        .getElementById("challenge")
+        .classList
+        .add("active");
+
 
 
       window.scrollTo({
+
         top: 0,
-        behavior: "smooth"
+
+        behavior:
+          "smooth"
+
       });
 
     }
 
 
+
+    /* ==================================================
+       DÉFI RÉALISÉ
+    ================================================== */
+
+
     function prendrePhoto() {
 
+
       alert(
+
         "📸 BRAVO !\n\n" +
+
         "Défi réalisé ! 🎉\n\n" +
-        "Pensez à envoyer la photo sur le groupe du mariage."
+
+        "Pensez à envoyer la photo " +
+
+        "sur le groupe du mariage."
+
       );
 
     }
 
+
   </script>
 
+
 </body>
+
 </html>
